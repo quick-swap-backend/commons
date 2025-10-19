@@ -31,8 +31,8 @@ dependencies {
   api("org.springframework.security:spring-security-config")
   api("jakarta.servlet:jakarta.servlet-api")
   api("io.jsonwebtoken:jjwt-api:0.13.0")
-  runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
-  runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")
+  api("io.jsonwebtoken:jjwt-impl:0.13.0")
+  api("io.jsonwebtoken:jjwt-jackson:0.13.0")
 
   api("com.fasterxml.jackson.module:jackson-module-kotlin")
   api("org.jetbrains.kotlin:kotlin-reflect")
