@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.security.core.userdetails.UserDetailsService
 import quickswap.commons.adapter.shared.security.CustomUserDetailsService
 import quickswap.commons.adapter.shared.security.JwtAuthenticationFilter
@@ -11,6 +12,7 @@ import quickswap.commons.adapter.shared.security.SecurityAuthenticationContext
 import quickswap.commons.application.shared.ports.out.AuthenticationContext
 import quickswap.commons.application.shared.ports.out.TokenResolver
 
+@ComponentScan(basePackages = ["quickswap.commons"])
 @AutoConfiguration
 class CommonsAutoConfiguration {
 
