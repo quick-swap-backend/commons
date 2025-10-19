@@ -1,0 +1,35 @@
+package quickswap.commons.domain.shared
+
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import quickswap.commons.domain.shared.vo.Address
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+
+class AddressTest {
+
+  @Test
+  fun validate() {
+    assertThrows<IllegalArgumentException> { Address("", "사당로 20길", "12345") }
+
+    assertThrows<IllegalArgumentException> { Address("서울특별시", "", "12345") }
+
+    assertThrows<IllegalArgumentException> { Address("서울특별시", "사당로 20길", "") }
+
+    Address("서울특별시", "사당로 20길", "12345")
+  }
+
+  @Test
+  fun equals() {
+    assertEquals(
+      Address("서울특별시", "사당로 20길", "12345"),
+      Address("서울특별시", "사당로 20길", "12345")
+    )
+
+    assertNotEquals(
+      Address("서울특별시", "사당로 20길", "12345"),
+      Address("서울특별시", "강남구", "12345")
+    )
+  }
+
+}
