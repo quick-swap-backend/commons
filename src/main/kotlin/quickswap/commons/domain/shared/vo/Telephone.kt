@@ -1,15 +1,9 @@
 package quickswap.commons.domain.shared.vo
 
-import jakarta.persistence.Column
 import jakarta.persistence.Embeddable
 
 @Embeddable
-data class Telephone(
-
-  @Column(name = "telephone")
-  val value: String
-
-) {
+data class Telephone(val value: String) {
 
   /*
   * 허용 하는 형식 예시.
