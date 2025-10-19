@@ -3,6 +3,7 @@ plugins {
   kotlin("plugin.jpa") version "1.9.25"
   kotlin("plugin.allopen") version "1.9.25"
   id("io.spring.dependency-management") version "1.1.7"
+  kotlin("plugin.spring") version "1.9.25"
 }
 
 group = "quickswap"
@@ -40,6 +41,8 @@ dependencies {
   api("com.github.f4b6a3:ulid-creator:5.2.3")
 
   api("org.slf4j:slf4j-api")
+
+  implementation("org.springframework.boot:spring-boot-autoconfigure")
 
   testImplementation("org.junit.jupiter:junit-jupiter")
   testImplementation("io.mockk:mockk:1.14.6")
