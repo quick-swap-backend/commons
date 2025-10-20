@@ -12,3 +12,7 @@ implementation("com.github.quick-swap-backend:commons:v0.0.2")
 SecurityFilterChain, AbstractJwtTokenResolver 의 구현체만 구현하면
 AuthenticationContext 를 통해 유저의 인증정보를 사용 할 수 있습니다.
 ```
+
+```
+카프카 사용하려면 AbstractKafkaConfig 상속받아 사용
+```

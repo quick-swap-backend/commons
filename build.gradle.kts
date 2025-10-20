@@ -35,6 +35,9 @@ dependencies {
   api("io.jsonwebtoken:jjwt-impl:0.13.0")
   api("io.jsonwebtoken:jjwt-jackson:0.13.0")
 
+  api("org.springframework.kafka:spring-kafka")
+  api("com.fasterxml.jackson.module:jackson-module-kotlin")
+
   api("com.fasterxml.jackson.module:jackson-module-kotlin")
   api("org.jetbrains.kotlin:kotlin-reflect")
 
@@ -44,6 +47,7 @@ dependencies {
 
   implementation("org.springframework.boot:spring-boot-autoconfigure")
 
+  testImplementation("org.springframework.kafka:spring-kafka-test")
   testImplementation("org.junit.jupiter:junit-jupiter")
   testImplementation("io.mockk:mockk:1.14.6")
   testImplementation("org.springframework.security:spring-security-test")
