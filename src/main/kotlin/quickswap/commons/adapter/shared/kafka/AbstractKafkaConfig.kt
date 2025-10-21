@@ -17,39 +17,37 @@ import org.springframework.kafka.support.serializer.JsonSerializer
 abstract class AbstractKafkaConfig {
 
   protected abstract fun getBootstrapServers(): String
-
   protected abstract fun getGroupId(): String
 
   @Bean
-  open fun producerFactory(): ProducerFactory<String, Any> {
+  open fun producerFactory(): ProducerFactory<String, String> {
     val config = mapOf(
       ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to getBootstrapServers(),
       ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
-      ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to JsonSerializer::class.java
+      ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java
     )
     return DefaultKafkaProducerFactory(config)
   }
 
   @Bean
-  open fun kafkaTemplate(): KafkaTemplate<String, Any> {
+  open fun kafkaTemplate(): KafkaTemplate<String, String> {
     return KafkaTemplate(producerFactory())
   }
 
   @Bean
-  open fun consumerFactory(): ConsumerFactory<String, Any> {
+  open fun consumerFactory(): ConsumerFactory<String, String> {
     val config = mapOf(
       ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to getBootstrapServers(),
       ConsumerConfig.GROUP_ID_CONFIG to getGroupId(),
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
-      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to JsonDeserializer::class.java,
-      JsonDeserializer.TRUSTED_PACKAGES to "*"
+      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java
     )
     return DefaultKafkaConsumerFactory(config)
   }
 
   @Bean
-  open fun kafkaListenerContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, Any> {
-    return ConcurrentKafkaListenerContainerFactory<String, Any>().apply {
+  open fun kafkaListenerContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, String> {
+    return ConcurrentKafkaListenerContainerFactory<String, String>().apply {
       consumerFactory = consumerFactory()
     }
   }
